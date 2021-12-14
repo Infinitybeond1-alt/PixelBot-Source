@@ -14,12 +14,14 @@ const client = new Client({
     partials: ["MESSAGE", "CHANNEL", "REACTION"],
     intents: 32767,
 });
+const colors = require('colors')
+
 module.exports = client;
 
 const config = require("./settings/config.json");
 const ee = require("./settings/embed.json");
 const prefix = config.prefix;
-const token = config.token;
+
 // Global Variables
 client.events = new Collection();
 client.cooldowns = new Collection();
@@ -32,7 +34,7 @@ client.categories = fs.readdirSync("./Commands/");
     require(`./handlers/${handler}`)(client)
 });
 
-client.login(token);
+client.login(process.env.TOKEN);
 
 
 process.on('unhandledRejection', (reason, p) => {
