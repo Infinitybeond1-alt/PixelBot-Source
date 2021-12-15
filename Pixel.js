@@ -15,6 +15,7 @@ const client = new Client({
     intents: 32767,
 });
 const colors = require('colors')
+require("dotenv").config();
 
 module.exports = client;
 
